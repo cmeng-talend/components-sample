@@ -25,12 +25,13 @@ import org.talend.sdk.component.api.configuration.constraint.Min;
 import org.talend.sdk.component.api.configuration.constraint.Required;
 import org.talend.sdk.component.api.configuration.type.DataSet;
 import org.talend.sdk.component.api.configuration.ui.layout.GridLayout;
+import org.talend.sdk.component.api.configuration.ui.widget.Credential;
 
 import lombok.Data;
 
 @DataSet("Dataset")
 @GridLayout({
-    @GridLayout.Row({ "connection" }),
+    @GridLayout.Row({ "connection", "passwordConfirmation" }),
     @GridLayout.Row({ "dataSetName" }),
     @GridLayout.Row({ "letter" })
 })
@@ -39,6 +40,10 @@ public class DatasetConfiguration implements Serializable {
 
     @Option
     private ConnectionConfiguration connection;
+    
+    @Option
+    @Credential
+    private String passwordConfirmation;
     
     @Option
     @Required

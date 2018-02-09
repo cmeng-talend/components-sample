@@ -13,7 +13,7 @@ import org.talend.sdk.component.api.configuration.ui.widget.Credential;
 
 @GridLayout({
     @GridLayout.Row({ "url" }),
-    @GridLayout.Row({ "user", "password", "passwordConfirmation" }),
+    @GridLayout.Row({ "user", "password" }),
 })
 @DataStore("Connection")
 @Checkable("testConnection")
@@ -29,12 +29,8 @@ public class ConnectionConfiguration implements Serializable {
     @Option
     @Credential
     @Required
-    @Validable(value = "pwdConfirm", parameters = {".", "passwordConfirmation"})
+    @Validable(value = "pwdConfirm", parameters = {".", "../passwordConfirmation"})
     private String password;
-    
-    @Option
-    @Credential
-    private String passwordConfirmation;
 
     public String getURL() {
         return url;
